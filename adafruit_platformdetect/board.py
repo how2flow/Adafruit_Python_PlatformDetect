@@ -830,9 +830,19 @@ class Board:
         return self.GIANT_BOARD
 
     @property
-    def any_odroid_40_pin(self) -> bool:
-        """Check whether the current board is any defined 40-pin Odroid."""
-        return self.id in boards._ODROID_40_PIN_IDS
+    def odroid_amlogic_40_pin(self) -> bool:
+        """Check whether the current board is defined Odroid amlogic chip Board."""
+        return self.id in boards._ODROID_AMLOGIC_40_PIN_IDS
+
+    @property
+    def odroid_rockchip_40_pin(self) -> bool:
+        """Check whether the current board is defined Odroid rockchip Board."""
+        return self.id in boards._ODROID_ROCKCHIP_40_PIN_IDS
+
+    @property
+    def odroid_samsung_40_pin(self) -> bool:
+        """Check whether the current board is defined Odroid samsung chip Board."""
+        return self.id in boards._ODROID_SAMSUNG_40_PIN_IDS
 
     @property
     def any_odroid_mini_pc(self) -> bool:
@@ -975,7 +985,9 @@ class Board:
             yield self.any_giant_board
             yield self.any_jetson_board
             yield self.any_coral_board
-            yield self.any_odroid_40_pin
+            yield self.odroid_amlogic_40_pin
+            yield self.odroid_rockchip_40_pin
+            yield self.odroid_samsung_40_pin
             yield self.any_odroid_mini_pc
             yield self.khadas_vim3_40_pin
             yield self.any_96boards
